@@ -37,9 +37,10 @@ end
 
 # Define your play method below
 def play(board)
-  spots = 0
-  while spots < 9
+  spots_in_board = board.size
+  spots_filled = 0
+  while spots_filled < spots_in_board
     turn(board)
-    spots += 1
+    spots_filled += 1
   end
 end
