@@ -38,7 +38,7 @@ end
 def play(board)
   counter = 0
   turn(board)
-  until counter == 9
+  until counter == 9 do 
   move(board, counter)
   counter +=1
   end
