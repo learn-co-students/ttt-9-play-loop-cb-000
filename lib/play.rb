@@ -36,7 +36,6 @@ def turn(board)
 end
 
 def play(board)
-  display_board(board)
   9.times do
     turn(board)
   end
