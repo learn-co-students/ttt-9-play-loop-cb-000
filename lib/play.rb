@@ -36,3 +36,10 @@ def turn(board)
 end
 
 # Define your play method below
+def play(board)
+  
+1.upto(9) { turn(board) }
+
+end
+ 
+   
