@@ -1,4 +1,4 @@
-# Helper Methods
+  #Helper Methods
 def display_board(board)
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
   puts "-----------"
@@ -6,33 +6,53 @@ def display_board(board)
   puts "-----------"
   puts " #{board[6]} | #{board[7]} | #{board[8]} "
 end
-
 def input_to_index(user_input)
+  #no check on user_input, just subtract 1
   user_input.to_i - 1
 end
-
 def move(board, index, current_player = "X")
+  #assumes position_taken? = no, and valid_move? = yes, and index is valid
   board[index] = current_player
 end
-
 def position_taken?(board, location)
-  board[location] != " " && board[location] != ""
+  board[location] != " " && board[location] != "" && board[location] != nil
 end
-
 def valid_move?(board, index)
-  index.between?(0,8) && !position_taken?(board, index)
-end
+  if !index.between?(0,8)
+    puts "[valid_move]: Invalid index:  #{index}"
+  end
 
-def turn(board)
-  puts "Please enter 1-9:"
+  if position_taken?(board, index)
+    puts "[valid_move]: Position taken:  #{index}"
+  end
+
+  return (index.between?(0,8) && !position_taken?(board, index))
+end
+# Define your play method below
+def get_input(token)
+  print "Player #{token} select an unused cell:  [1-9]:  "
   input = gets.strip
-  index = input_to_index(input)
-  if valid_move?(board, index)
-    move(board, index)
-    display_board(board)
+  puts ""
+  return input
+end
+def get_new_token(token)
+  if token == 'X'
+    return 'O'
   else
-    turn(board)
+    return 'X'
   end
 end
-
-# Define your play method below
+def play(board)
+  turn = 1
+  token = 'X'
+  while turn <= 9
+    display_board
+    input = get_input(token)
+    index = input_to_index(input) #just subtracts 1 from any value
+    if (valid_move?(board, index))
+      move(board, index, token)
+      token = get_new_token(token)
+      turn += 1
+    end
+  end
+end
