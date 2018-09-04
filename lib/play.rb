@@ -35,4 +35,15 @@ def turn(board)
   end
 end
 
+def count_moves(board)
+  total = 0
+  total += board.count("X")
+  total += board.count("O")
+end
+
 # Define your play method below
+def play(board)
+  while count_moves(board) < 9
+    turn(board)
+  end
+end
