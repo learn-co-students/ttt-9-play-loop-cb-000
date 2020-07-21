@@ -36,3 +36,8 @@ def turn(board)
 end
 
 # Define your play method below
+def play(board)
+  while board[8] == "" || board[8] == " " 
+    turn(board)
+  end
+end
