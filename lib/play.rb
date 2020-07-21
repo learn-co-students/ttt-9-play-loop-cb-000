@@ -35,4 +35,11 @@ def turn(board)
   end
 end
 
-# Define your play method below
+def play(board)
+  counter = 0
+  turn(board)
+  until counter == 9 do 
+  move(board, counter)
+  counter +=1
+  end
+end
