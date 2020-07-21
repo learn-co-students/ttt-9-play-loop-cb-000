@@ -36,3 +36,21 @@ def turn(board)
 end
 
 # Define your play method below
+def play(board)
+  def space_left(board)
+    counter = 0
+    stt = false
+    while counter < 9
+      if board[counter] == " " || board[counter] == ""
+        stt = true
+      end
+      counter += 1
+    end
+    stt
+  end
+
+  while space_left(board)
+    turn(board)
+  end
+
+end
